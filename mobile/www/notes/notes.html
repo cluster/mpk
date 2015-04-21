@@ -1,5 +1,17 @@
 <ion-view view-title="Daily Notes">
-  <ion-content>
-    <h1>Notes</h1>
-  </ion-content>
+  <ion-content class="has-header">
+
+      <ion-list>
+
+        <ion-item ng-repeat="note in notes.notes"
+                  item="note"
+                  href="#/note/{{note.date}}">
+          {{ note.date | date:'dd/MM/yyyy' }}
+        </ion-item>
+
+      </ion-list>
+
+      <ion-infinite-scroll on-infinite="notes.loadMore()" distance="20%"></ion-infinite-scroll>
+
+    </ion-content>
 </ion-view>

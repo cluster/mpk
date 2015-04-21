@@ -29,7 +29,7 @@ angular.module('mpk', ['ionic'])
     views: {
       'menuContent': {
         templateUrl: "notes/notes.html",
-        controller: 'NotesCtrl'
+        controller: 'NotesCtrl as notes'
       }
     }
   })
@@ -39,7 +39,7 @@ angular.module('mpk', ['ionic'])
     views: {
       'menuContent': {
         templateUrl: "ideas/ideas.html",
-        controller: 'IdeasCtrl'
+        controller: 'IdeasCtrl as ideas'
       }
     }
   })
@@ -48,7 +48,7 @@ angular.module('mpk', ['ionic'])
       views: {
         'menuContent': {
           templateUrl: "goals/goals.html",
-          controller: 'GoalsCtrl'
+          controller: 'GoalsCtrl as goals'
         }
       }
     })
@@ -58,7 +58,7 @@ angular.module('mpk', ['ionic'])
     views: {
       'menuContent': {
         templateUrl: "kanban/kanban.html",
-        controller: 'KanbanCtrl'
+        controller: 'KanbanCtrl as kanban'
       }
     }
   });
