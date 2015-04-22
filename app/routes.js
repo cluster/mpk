@@ -9,12 +9,26 @@ module.exports = function(app, passport) {
     });
   });
 
+  //get note by date
+  app.get('/api/notes/:date', function(req, res){
+    Note.findOne({
+      date : req.params.date
+    }, function(err, notes){
+      if(err)
+        res.send(err);
+      res.json(notes);
+    });
+  });
+
   //creating a note
   app.post('/api/notes', function(req, res){
-    Note.create({
-      date : req.body.date,
-      content : req.body.content
-    }, function(err, notes){
+    Note.update({date:req.body.date},
+      {
+        date : req.body.date,
+        content : req.body.content
+      },
+      {upsert: true},
+      function(err, notes){
         if(err)
           req.send(err);
         res.json(notes);

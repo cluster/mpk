@@ -1,0 +1,12 @@
+<ion-view view-title="{{note.date}}">
+  <ion-nav-buttons side="right">
+      <button class="button button-positive" ng-click="note.save()">
+        Save
+      </button>
+    </ion-nav-buttons>
+  <ion-content class="has-header">
+    <label class="item item-input">
+      <textarea ng-model="note.content" placeholder="Note" rows="15"></textarea>
+    </label>
+  </ion-content>
+</ion-view>

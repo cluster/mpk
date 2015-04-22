@@ -34,6 +34,16 @@ angular.module('mpk', ['ionic'])
     }
   })
 
+  .state('app.note', {
+    url: "/note/:date",
+    views: {
+      'menuContent': {
+        templateUrl: "notes/note.html",
+        controller: 'NoteCtrl as note'
+      }
+    }
+  })
+
   .state('app.ideas', {
     url: "/ideas",
     views: {
