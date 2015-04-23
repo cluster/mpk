@@ -1,4 +1,5 @@
-var Note = require('./note.js')
+var Note = require('./note.js'),
+    Goal = require('./goal.js')
 module.exports = function(app, passport) {
   //listing notes
   app.get('/api/notes', function(req, res){
@@ -35,19 +36,27 @@ module.exports = function(app, passport) {
     })
   });
 
-  //deleting a note
-  app.delete('/api/notes/:id', function(req, res){
-    Note.remove({
-      _id : req.params.id
-    }, function(err, notes){
+  //listing goals
+  app.get('/api/goals', function(req, res){
+    Goal.find(function(err, notes){
+      if(err)
+        res.send(err);
+      res.json(notes);
+    });
+  });
+
+  //creating a goal
+  app.post('/api/goals', function(req, res){
+    Goal.update({id:req.body.id},
+      {
+        title : req.body.title,
+        description : req.body.description
+      },
+      {upsert: true},
+      function(err, notes){
         if(err)
-          res.send(err);
-        //not very efficient, change that later...
-        Note.find(function(err, todos) {
-          if (err)
-            res.send(err)
-          res.json(todos);
-        });
+          req.send(err);
+        res.json(notes);
     })
   });
 
