@@ -1,0 +1,12 @@
+<ion-view view-title="{{goal.goal.title}}">
+  <ion-nav-buttons side="right">
+      <button class="button button-positive" ng-click="goal.save()">
+        Save
+      </button>
+    </ion-nav-buttons>
+  <ion-content class="has-header">
+    <label class="item item-input">
+      <textarea ng-model="goal.goal.description" placeholder="Goal" rows="15"></textarea>
+    </label>
+  </ion-content>
+</ion-view>

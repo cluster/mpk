@@ -60,6 +60,17 @@ module.exports = function(app, passport) {
     })
   });
 
+  //get note by date
+  app.get('/api/goals/:id', function(req, res){
+    Goal.findOne({
+      _id : req.params.id
+    }, function(err, notes){
+      if(err)
+        res.send(err);
+      res.json(notes);
+    });
+  });
+
   app.get('/', function(req, res){
     res.sendfile('./mobile/www/index.html');
   });

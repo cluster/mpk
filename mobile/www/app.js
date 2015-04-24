@@ -53,16 +53,24 @@ angular.module('mpk', ['ionic'])
       }
     }
   })
-    .state('app.goals', {
-      url: "/goals",
-      views: {
-        'menuContent': {
-          templateUrl: "goals/goals.html",
-          controller: 'GoalsCtrl as goals'
-        }
+  .state('app.goals', {
+    url: "/goals",
+    views: {
+      'menuContent': {
+        templateUrl: "goals/goals.html",
+        controller: 'GoalsCtrl as goals'
       }
-    })
-
+    }
+  })
+  .state('app.goal', {
+    url: "/goal/:id",
+    views: {
+      'menuContent': {
+        templateUrl: "goals/goal.html",
+        controller: 'GoalCtrl as goal'
+      }
+    }
+  })
   .state('app.kanban', {
     url: "/kanban",
     views: {
