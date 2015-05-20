@@ -71,6 +71,7 @@ angular.module('mpk', ['ionic'])
       }
     }
   })
+
   .state('app.kanban', {
     url: "/kanban",
     views: {

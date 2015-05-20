@@ -1,4 +1,9 @@
 <ion-view view-title="My Goals">
+  <ion-nav-buttons side="right">
+    <a class="button button-positive" ng-href="#/app/goal/new">
+      New
+    </a>
+  </ion-nav-buttons>
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="goal in goals.goals"

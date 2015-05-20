@@ -47,17 +47,31 @@ module.exports = function(app, passport) {
 
   //creating a goal
   app.post('/api/goals', function(req, res){
-    Goal.update({id:req.body.id},
-      {
+    var id = req.body._id;
+    if(id){
+      Goal.findOneAndUpdate({_id:id},
+        {
+          title : req.body.title,
+          description : req.body.description
+        },
+        function(err, notes){
+          if(err)
+            res.send(err);
+          res.json(notes);
+      });
+    }else{
+      var goal = new Goal({
         title : req.body.title,
         description : req.body.description
-      },
-      {upsert: true},
-      function(err, notes){
-        if(err)
-          req.send(err);
-        res.json(notes);
-    })
+      });
+      goal.save(
+        function(err, notes){
+          if(err)
+            res.send(err);
+          res.json(notes);
+      });
+    }
+
   });
 
   //get note by date
